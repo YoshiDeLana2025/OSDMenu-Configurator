@@ -6,7 +6,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    container: ghcr.io/ps2homebrew/ps2homebrew:main
+    container: ghcr.io/ps2homebrew/ps2homebrew@sha256:106ad024016ef0776cbfd99b27fb30c849de62fe374653680fd7a0f19245e078
     steps:
     - name: Install cmake
       run: |
