@@ -42,33 +42,3 @@ jobs:
         path: |
           release/**
           release_vfs/**
-
-    - name: Get git describe
-      run: |
-        echo "GIT_VERSION=$(git describe --always --dirty --tags --exclude nightly)" >> $GITHUB_ENV
-
-    - name: Build release archive
-      run: |
-        cd release_vfs
-        zip -r ../osdmenu-configurator-${{ env.GIT_VERSION }}.zip ./*
-
-    - name: Create nightly release
-      uses: "marvinpinto/action-automatic-releases@latest"
-      if: github.ref == 'refs/heads/main'
-      with:
-        repo_token: "${{ secrets.GITHUB_TOKEN }}"
-        automatic_release_tag: "nightly"
-        prerelease: true
-        title: "Nightly build"
-        files: |
-          osdmenu-configurator-${{ env.GIT_VERSION }}.zip
-
-    - name: Create stable release
-      uses: "marvinpinto/action-automatic-releases@latest"
-      if: startsWith(github.ref, 'refs/tags/v')
-      with:
-        repo_token: "${{ secrets.GITHUB_TOKEN }}"
-        draft: true
-        files: |
-          osdmenu-configurator-${{ env.GIT_VERSION }}.zip
-
