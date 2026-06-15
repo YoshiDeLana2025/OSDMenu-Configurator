@@ -60,6 +60,8 @@ config_options.osdmenu_cnf_categories = {
       { key = "OSDSYS_cursor_acceleration",   optType = "int",   default = "150" },
       { key = "OSDSYS_left_cursor",           optType = "text",  default = "",                   maxLen = 19 },
       { key = "OSDSYS_right_cursor",          optType = "text",  default = "",                   maxLen = 19 },
+      { key = "OSDSYS_menu_top_delimiter",    optType = "text",  default = "",                   maxLen = 79 },
+      { key = "OSDSYS_menu_bottom_delimiter", optType = "text",  default = "",                   maxLen = 79 },
       { key = "OSDSYS_num_displayed_items",   optType = "int",   default = "5" },
       { key = "OSDSYS_selected_color",        optType = "color", default = "0x10,0x80,0xE0,0x80" },
       { key = "OSDSYS_unselected_color",      optType = "color", default = "0x33,0x33,0x33,0x80" },

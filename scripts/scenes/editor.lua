@@ -66,15 +66,27 @@ local function run(ctx)
   end
 
   if ctx.fileType == "osdmenu_cnf" and ctx.editorCategoryIdx == 0 then
-    local cats = _.config_options.osdmenu_cnf_categories or {}
+    -- Filter categories: hide 1 and 2, show only 3 and 4
+    local allCats = _.config_options.osdmenu_cnf_categories or {}
+    local visibleCategoryIndices = { 3, 4 }  -- Show only categories 3 and 4
+    local cats = {}
+    local originalIndices = {}  -- Map from filtered index to original index
+    for _, idx in ipairs(visibleCategoryIndices) do
+      if allCats[idx] then
+        table.insert(cats, allCats[idx])
+        table.insert(originalIndices, idx)
+      end
+    end
+    
     if ctx.optSel < 1 then ctx.optSel = 1 end
     if ctx.optSel > #cats then ctx.optSel = #cats end
     for i = 1, math.min(_.MAX_VISIBLE, #cats) do
       local cat = cats[i]
       local y = _.MARGIN_Y + _.scaleY(50) + (i - 1) * _.ROW_H
       local col = (i == ctx.optSel) and _.SELECTED_ENTRY or _.WHITE
+      local categoryIndex = originalIndices[i]
       _.drawListRow(_.MARGIN_X + 16, y, i == ctx.optSel,
-        (_.strings.categories and _.strings.categories[i]) or cat.name or _.common_str.empty, col)
+        (_.strings.categories and _.strings.categories[categoryIndex]) or cat.name or _.common_str.empty, col)
     end
     _.common.drawHintLine(_.font, _.drawMode, _.MARGIN_X, _.HINT_Y, 0.7, _.editor_str.cross_open_circle_back_items, nil,
       _.DIM, _.w - 2 * _.MARGIN_X)
@@ -92,7 +104,7 @@ local function run(ctx)
         ctx.entrySel = 1
         ctx.entryScroll = 0
       else
-        ctx.editorCategoryIdx = ctx.optSel
+        ctx.editorCategoryIdx = originalIndices[ctx.optSel]  -- Store original category index
         local rawOpts = cat.options or {}
         -- DKWDRV custom path not applicable for HOSDMenu (no MC path)
         if ctx.context == "hosdmenu" then
