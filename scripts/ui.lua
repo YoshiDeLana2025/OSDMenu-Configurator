@@ -189,7 +189,11 @@ local function mainLoop()
   -- One-frame dispatch for all states. Main-flow states use runSceneLoop; others use this.
   local function runOneFrame(c)
     syncFromS(c)
-    Screen.clear(BLACK)
+    if ctx.backgroundImage and Graphics.drawScaleImage then
+      Graphics.drawScaleImage(ctx.backgroundImage, 0, 0, 640, 448)
+    else
+      Screen.clear(BLACK)
+    end
     local vmode = Screen.getMode()
     local w = (vmode and vmode.width) or common.DEFAULT_W
     local h = (vmode and vmode.height) or common.DEFAULT_H
