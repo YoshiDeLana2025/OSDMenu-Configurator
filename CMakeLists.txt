@@ -48,21 +48,10 @@ set(SOURCES
 include(${CMAKE_CURRENT_SOURCE_DIR}/irx.cmake)
 include(${CMAKE_CURRENT_SOURCE_DIR}/embed.cmake)
 
-# Git version for splash (git describe --always --dirty --tags --exclude nightly)
-find_package(Git QUIET)
-if(GIT_FOUND)
-    execute_process(
-        COMMAND ${GIT_EXECUTABLE} describe --always --dirty --tags --exclude nightly
-        OUTPUT_VARIABLE GIT_VERSION
-        OUTPUT_STRIP_TRAILING_WHITESPACE
-        ERROR_QUIET
-        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-    )
-else()
-    set(GIT_VERSION "unknown")
-endif()
 
-add_definitions(-DAPP_VERSION=\"${GIT_VERSION}\")
+set(CONF_VERSION "v1.3.0")
+
+add_definitions(-DAPP_VERSION=\"${CONF_VERSION}\")
 add_definitions(-DLUA_USE_PS2)
 
 if(ENABLE_DEBUG)
