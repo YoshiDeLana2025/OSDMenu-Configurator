@@ -79,6 +79,17 @@ local padIconNames                 = {
   r3 = "R3"
 }
 
+function common.loadBackgroundImage()
+  local ok, img = pcall(Graphics.loadImage, "scripts/textures/background.png")
+  if ok and img then
+    if Graphics.setImageFilters and LINEAR then
+      pcall(Graphics.setImageFilters, img, LINEAR)
+    end
+    return img
+  end
+  return nil
+end
+
 function common.getPadIcon(name)
   if not name then return nil end
   local key = name:lower()
@@ -327,7 +338,11 @@ end
 -- Shared scene loop: clear, layout, getPadEffective, runHandler(ctx, pad), exit when ctx.state ~= sceneName.
 function common.runSceneLoop(ctx, sceneName, runHandler)
   while true do
-    Screen.clear(common.BGCOLOR)
+    if ctx.backgroundImage and Graphics.drawScaleImage then
+      Graphics.drawScaleImage(ctx.backgroundImage, 0, 0, 640, 448)
+    else
+      Screen.clear(common.BGCOLOR)
+    end
     common.runLayout(ctx)
     local padEffective = common.getPadEffective(ctx)
     runHandler(ctx, padEffective)

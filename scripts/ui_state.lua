@@ -62,6 +62,7 @@ local function initContext()
     editorLeavePrompt = nil,
     returnToSelectConfigAfterSave = nil,
     returnToSelectConfigAfterSaveFlash = nil,
+    backgroundImage = nil,
   }
 end
 

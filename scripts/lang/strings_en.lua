@@ -8,14 +8,14 @@ local strings = {}
 
 -- Main flow (main, choose_mc, select_config, initHdd, open, choose_load)
 strings.main = {
-  main_title = "OSDMenu Configurator",
+  main_title = "YoshiBoot Configurator",
   main_sub = "Pick one of the options below",
   version_unknown = "unknown",
   main_hint_items = { { pad = "up", label = "Up" }, { pad = "cross", label = "Enter" }, { pad = "down", label = "Down" }, { pad = "start", label = "Exit", row = 2 } },
   main_hint_items_with_lang = { { pad = "up", label = "Up" }, { pad = "cross", label = "Enter" }, { pad = "down", label = "Down" }, { pad = "L1", label = "Language", row = 2 }, { pad = "start", label = "Save", row = 2 }, { pad = "R1", label = "Language", row = 2 } },
-  main_osdmenu_mc = "OSDMenu",
-  main_hosdmenu_hdd = "HOSDMenu",
-  main_osdmenu_mbr = "OSDMenu MBR",
+  main_osdmenu_mc = "YoshiBoot (on Memory Card)",
+  main_hosdmenu_hdd = " ",
+  main_osdmenu_mbr = " ",
   main_exit = "Exit to browser",
   main_exit_prompt = "Exit to browser?",
   main_exit_hint_items = { { pad = "cross", label = "Yes" }, { pad = "circle", label = "No" } },
@@ -35,9 +35,9 @@ strings.main = {
   cross_back_items = { { pad = "cross", label = "Back" } },
   failed_to_load = "Failed to load: ",
   cross_load_circle_back_items = { { pad = "cross", label = "Load" }, { pad = "circle", label = "Back" } },
-  select_config_osdmenu_cnf = "OSDMENU.CNF",
-  select_config_osdmbr_cnf = "OSDMBR.CNF",
-  select_config_osdgsm_cnf = "OSDGSM.CNF",
+  select_config_osdmenu_cnf = "YoshiBoot Configuration",
+  select_config_osdmbr_cnf = "MBR Configuration",
+  select_config_osdgsm_cnf = "GSM configuration",
 }
 
 -- Editor

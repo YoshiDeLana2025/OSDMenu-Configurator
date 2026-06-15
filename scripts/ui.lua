@@ -91,7 +91,8 @@ local function mainLoop()
 
   local ctx = scene_module.initContext()
   ctx.font, ctx.drawMode, ctx.drawListRow = font, drawMode, drawListRow
-  ctx.main = { strings.main.main_osdmenu_mc, strings.main.main_hosdmenu_hdd, strings.main.main_osdmenu_mbr }
+  ctx.main = { strings.main.main_osdmenu_mc }
+  ctx.backgroundImage = common.loadBackgroundImage()
 
   local mainSel = 1
   local context, fileType, currentPath, lines = "osdmenu", nil, nil, nil
