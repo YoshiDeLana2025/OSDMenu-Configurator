@@ -2,8 +2,6 @@
 
 extern unsigned char title_png[];
 extern unsigned int size_title_png;
-extern unsigned char loading_png[];
-extern unsigned int size_loading_png;
 
 static const uint64_t SPLASH_BG_RGBAQ =
     GS_SETREG_RGBAQ(0x4A, 0x09, 0x5A, 0x80, 0x00);
@@ -18,23 +16,13 @@ void showSplashScreen(void) {
   const int h = getGSGLOBAL()->Height;
 
   GSTEXTURE *tex_title = load_png_from_memory(title_png, size_title_png, true);
-  GSTEXTURE *tex_loading =
-      load_png_from_memory(loading_png, size_loading_png, true);
 
   if (tex_title) {
     float tw = (float)tex_title->Width;
     float th = (float)tex_title->Height;
     float cx = (float)w * 0.5f;
     float cy = (float)h * 0.5f - 30.0f;
-    drawImage(tex_title, 50, 92, tw, th, 0.0f, 0.0f, tw, th,
-              GS_SETREG_RGBA(0x80, 0x80, 0x80, 0x80));
-  }
-  if (tex_loading) {
-    float lw = (float)tex_loading->Width;
-    float lh = (float)tex_loading->Height;
-    float cx = (float)w * 0.5f;
-    float cy = (float)(h - 100);
-    drawImage(tex_loading, 190, 330, lw, lh, 0.0f, 0.0f, lw, lh,
+    drawImage(tex_title, 0, 0, tw, th, 0.0f, 0.0f, tw, th,
               GS_SETREG_RGBA(0x80, 0x80, 0x80, 0x80));
   }
 
@@ -42,6 +30,4 @@ void showSplashScreen(void) {
 
   if (tex_title)
     UnloadTexture(tex_title);
-  if (tex_loading)
-    UnloadTexture(tex_loading);
 }

@@ -2,7 +2,6 @@
 set(EMBED_FILES
     res/boot.lua
     res/title.png
-    res/loading.png
 )
 
 set(EMBED_BINDIR ${CMAKE_CURRENT_BINARY_DIR})
