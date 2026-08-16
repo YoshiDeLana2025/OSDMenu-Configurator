@@ -91,7 +91,7 @@ local function mainLoop()
 
   local ctx = scene_module.initContext()
   ctx.font, ctx.drawMode, ctx.drawListRow = font, drawMode, drawListRow
-  ctx.main = { strings.main.main_osdmenu_mc }
+  ctx.main = { strings.main.main_osdmenu_mc, strings.main.main_hosdmenu_hdd }
   ctx.backgroundImage = common.loadBackgroundImage()
 
   local mainSel = 1
