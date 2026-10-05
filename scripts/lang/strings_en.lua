@@ -15,7 +15,7 @@ strings.main = {
   main_hint_items_with_lang = { { pad = "up", label = "Up" }, { pad = "cross", label = "Enter" }, { pad = "down", label = "Down" }, { pad = "L1", label = "Language", row = 2 }, { pad = "start", label = "Save", row = 2 }, { pad = "R1", label = "Language", row = 2 } },
   main_osdmenu_mc = "YoshiBoot (on Memory Card)",
   main_hosdmenu_hdd = "YoshiBoot (on HDD)",
-  main_osdmenu_mbr = " ",
+  main_osdmenu_mbr = "OSDMenu MBR",
   main_exit = "Exit to browser",
   main_exit_prompt = "Exit to browser?",
   main_exit_hint_items = { { pad = "cross", label = "Yes" }, { pad = "circle", label = "No" } },
