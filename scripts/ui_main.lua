@@ -177,12 +177,6 @@ local function runMain(s, pad)
     if not isSelectable(s.mainSel) then
       -- HOSDMenu/MBR grayed and unselectable
     elseif s.mainSel == 1 then
-      s.context = "osdmenu"
-      s.chosenMcSlot = nil
-      clearPathPickerState(s)
-      s.state = "choose_mc"
-      s.mcSel = 1
-    elseif s.mainSel == 2 then
       s.context = "hosdmenu"
       s.chosenMcSlot = nil
       clearPathPickerState(s)
@@ -191,6 +185,12 @@ local function runMain(s, pad)
       else
         s.state = "initHdd"; s.initHddPhase = "load"
       end
+    elseif s.mainSel == 2 then
+      s.context = "osdmenu"
+      s.chosenMcSlot = nil
+      clearPathPickerState(s)
+      s.state = "choose_mc"
+      s.mcSel = 1
     elseif s.mainSel == 3 then
       s.context = "mbr"
       s.chosenMcSlot = nil
